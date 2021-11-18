@@ -25,10 +25,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank(
-     *     message = "The email field cannot be empty"
+     *     message = "Le champ mot de passe ne peut pas être vide."
      * )
      *  @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email."
+     *     message = "{{ value }} n'est pas une adresse mail valide."
      * )
      */
     private $email;

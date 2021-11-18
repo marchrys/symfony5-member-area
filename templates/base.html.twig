@@ -36,6 +36,12 @@
             </div>
         </nav>
         <div class="container">
+        test
+        {% for message in app.flashes('success') %}
+            <div>
+                {{ message }}
+            </div>
+        {% endfor %}
         {% block body %}{% endblock %}
         </div>
  

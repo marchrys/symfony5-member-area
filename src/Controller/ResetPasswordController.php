@@ -93,7 +93,7 @@ class ResetPasswordController extends AbstractController
             $user = $this->resetPasswordHelper->validateTokenAndFetchUser($token);
         } catch (ResetPasswordExceptionInterface $e) {
             $this->addFlash('reset_password_error', sprintf(
-                'There was a problem validating your reset request - %s',
+                'Une erreur est survenue avec votre demande de réinitialisation du mot de passe - le lien pour la réinitialisation n\'est pas valide. Veuillez réessayer.',
                 $e->getReason()
             ));
 
@@ -117,6 +117,7 @@ class ResetPasswordController extends AbstractController
             $user->setPassword($encodedPassword);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Votre mot de passe a été réinitialisé.');
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
 
@@ -157,7 +158,7 @@ class ResetPasswordController extends AbstractController
         $email = (new TemplatedEmail())
             ->from(new Address('mchr70@gmail.com', 'Apps for Curious Minds'))
             ->to($user->getEmail())
-            ->subject('Your password reset request')
+            ->subject('Votre demande de réinitialisation du mot de passe')
             ->htmlTemplate('reset_password/email.html.twig')
             ->context([
                 'resetToken' => $resetToken,

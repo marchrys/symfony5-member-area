@@ -1,15 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Réinitialisation de votre de passe{% endblock %}
+{% block title %}Réinitialisation de votre mot de passe{% endblock %}
 
 {% block body %}
     {% for flashError in app.flashes('reset_password_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
-    <h1>Réinitialisation de votre de passe</h1>
+    <h1>Réinitialisation de votre mot de passe</h1>
 
     {{ form_start(requestForm, {attr: {'novalidate': 'novalidate'}}) }}
-        {{ form_row(requestForm.email) }}
+        <div class="error">{{ form_errors(requestForm.email) }}</div>
+        {{ form_label(requestForm.email, 'Adresse mail') }}
+        {{ form_widget(requestForm.email) }}
+
         <div>
             <small>
                 Entrez votre adresse mail et nous vous enverrons un mail pour réinitialiser votre mot de passe.

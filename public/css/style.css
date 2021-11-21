@@ -1,5 +1,19 @@
 :root {
-    font-size: 16px;
+    --screen-bg-color: #fff;
+    --main-bg-color: #885189;
+    --danger-color: red;
+    --green-color: green;
+    background-color: var(--screen-bg-color);
+    font-size: 17px;
+}
+
+.nav-wrapper, .btn, div.collapsible-header, footer{
+    background-color: var(--main-bg-color);
+    color: white;
+}
+
+.brand-logo {
+  font-size: 1.4rem !important;
 }
 
 .container {
@@ -8,17 +22,48 @@
 }
 
 h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.btn:hover, .btn:active {
+    background-color: var(--main-bg-color);
+}
+
+/* label focus color */
+input:not(:focus) + label {
+    color: gray !important;
+}
+
+input:focus + label {
+    color: black !important;
+}
+
+/* label underline focus color */
+input {
+    border-bottom: 1px solid gray !important;
+    box-shadow: 0 1px 0 0 gray !important
+}
+
+input:focus {
+    border-bottom: 1px solid black !important;
+    box-shadow: 0 1px 0 0 black !important
+}
+
+.flash-error {
+    color: #ba3939;
+    background: #ffe0e0;
+    border: 1px solid #a33a3a;
+    padding: 10px;
+}
+
+.flash-success {
+    color: #2b7515;
+    background: #ecffd6;
+    border: 1px solid #617c42;
+    padding: 10px;
 }
 
 .error {
-    color: red;
-}
-
-.success {
-    color: #270;
-    background-color: #DFF2BF;
-    padding: 10px;
-    border-radius: 5px;
+    color: #ba3939;
 }

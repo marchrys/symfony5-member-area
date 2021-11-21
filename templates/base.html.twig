@@ -16,7 +16,7 @@
     <body>
         <nav>
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Logo</a>
+                <a href="#" class="brand-logo left">Logo</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li {% if app.request.get('_route') == 'home' %} class="active" {% endif %}>
                         <a href="{{ path('home') }}">Accueil</a>
@@ -36,14 +36,23 @@
                 </ul>
             </div>
         </nav>
+
         <div class="container">
 
         {% for message in app.flashes('success') %}
-            <div class="success">
+            <div class="flash-success">
                 <i class="fas fa-check"></i>
                 {{ message }}
             </div>
         {% endfor %}
+
+        {% for message in app.flashes('error') %}
+            <div class="flash-error">
+                <i class="fas fa-times"></i>
+                {{ message }}
+            </div>
+        {% endfor %}
+
         {% block body %}{% endblock %}
         </div>
  
